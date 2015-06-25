@@ -1,0 +1,22 @@
+{
+  "name": "anothergrid.css",
+  "version": "0.0.0",
+  "authors": [
+    "Benjamin Hinchley <benjaminhinchley@gmail.com>"
+  ],
+  "description": "another grid system based on the calc css function",
+  "main": "anothergrid.css",
+  "keywords": [
+    "css",
+    "grid",
+    "postcss"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "gulpfile.js",
+    "package.json"
+  ]
+}
