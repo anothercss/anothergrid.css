@@ -1,17 +1,21 @@
 {
   "name": "anothergrid.css",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "another grid system",
   "authors": [
     "Benjamin Hinchley <benjaminhinchley@gmail.com>"
   ],
-  "description": "another grid system based on the calc css function",
-  "main": "anothergrid.css",
+  "license": "MIT",
+  "main": [
+    "anothergrid.css",
+    "dist/anothergrid.css",
+    "dist/anothergrid.min.css"
+  ],
   "keywords": [
     "css",
     "grid",
     "postcss"
   ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",

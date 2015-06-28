@@ -1,12 +1,12 @@
 {
   "name": "anothergrid.css",
-  "version": "0.0.0",
-  "description": "another grid system based on the calc css function",
+  "version": "0.0.1",
+  "description": "another grid system",
+  "author": "Benjamin Hinchley <benjaminhinchley@gmail.com>",
+  "license": "MIT",
   "directories": {
     "example": "examples"
   },
-  "author": "Benjamin Hinchley <benjaminhinchley@gmail.com>",
-  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.7.12",
     "gulp": "^3.9.0",
