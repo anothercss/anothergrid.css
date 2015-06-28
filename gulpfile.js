@@ -7,7 +7,8 @@ var cssmin = require('gulp-cssmin');
 var paths = {
   css: {
     src: './anothergrid.css',
-    dest: ['./dist','./examples/css']
+    dest: ['./dist','./examples/css'],
+    watch: './anothergrid.css'
   }
 };
 
@@ -39,6 +40,9 @@ gulp.task('dev', function() {
   });
 })
 
+gulp.task('watch', function () {
+  gulp.watch(paths.css.watch, ['dev']);
+})
 
 gulp.task('prod', function() {
   cssTask({
