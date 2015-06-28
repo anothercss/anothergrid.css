@@ -7,7 +7,7 @@ var cssmin = require('gulp-cssmin');
 var paths = {
   css: {
     src: './anothergrid.css',
-    dest: './dist'
+    dest: ['./dist','./examples/css']
   }
 };
 
