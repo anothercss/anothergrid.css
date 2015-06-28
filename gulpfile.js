@@ -7,7 +7,7 @@ var cssmin = require('gulp-cssmin');
 var paths = {
   css: {
     src: './anothergrid.css',
-    dest: ['./dist','./examples/css'],
+    dest: './dist',
     watch: './anothergrid.css'
   }
 };
@@ -18,7 +18,6 @@ var processors = [
   require('postcss-custom-media'),
   require('postcss-calc')
 ];
-
 
 var cssTask = function(options) {
   return gulp.src(options.src)
