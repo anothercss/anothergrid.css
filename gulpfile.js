@@ -8,6 +8,7 @@ var paths = {
   css: {
     src: './anothergrid.css',
     dest: './dist',
+    examples: './examples/css',
     watch: './anothergrid.css'
   }
 };
@@ -23,11 +24,13 @@ var cssTask = function(options) {
   return gulp.src(options.src)
     .pipe(postcss(processors))
     .pipe(gulp.dest(options.dest))
+    .pipe(gulp.dest(options.examples))
     .pipe(gulpif(options.minify, rename({
       extname: ".min.css"
     })))
     .pipe(gulpif(options.minify, cssmin(options.cssmin)))
     .pipe(gulpif(options.minify, gulp.dest(options.dest)))
+    .pipe(gulpif(options.minify, gulp.dest(options.examples)))
 }
 
 
@@ -35,7 +38,8 @@ gulp.task('dev', function() {
   cssTask({
     src: paths.css.src,
     minify: false,
-    dest: paths.css.dest
+    dest: paths.css.dest,
+    examples: paths.css.examples
   });
 })
 
@@ -59,6 +63,7 @@ gulp.task('prod', function() {
       roundingPrecision: 10,
       shorthandCompacting: false
     },
-    dest: paths.css.dest
+    dest: paths.css.dest,
+    examples: paths.css.examples
   });
 })
