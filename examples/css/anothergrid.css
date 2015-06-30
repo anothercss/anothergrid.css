@@ -9,8 +9,6 @@
   margin-right: -0.5em;
 }
 
-.row ~ .row { margin-top: 1em; }
-
 .row:before,
 .row:after { content: " "; display: table; }
 .row:after { clear: both; }
@@ -21,6 +19,7 @@
   min-height: 1px;
 }
 
+.row ~ .row,
 .columns ~ .columns { margin-top: 1em; }
 
 @media screen and (min-width: 30em) {
