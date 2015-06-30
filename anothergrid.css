@@ -57,15 +57,19 @@
   .eleven.columns       { width: calc(calc(var(--column-width) * 11) - var(--gutter)); }
   .twelve.columns       { width: calc(calc(var(--column-width) * 12) - var(--gutter)); }
 
-  .offset-by-one.columns    { margin-left: calc(calc(var(--column-width) * 1) + calc(var(--gutter) / 2)); }
-  .offset-by-two.columns    { margin-left: calc(calc(var(--column-width) * 2) + calc(var(--gutter) / 2)); }
-  .offset-by-three.columns  { margin-left: calc(calc(var(--column-width) * 3) + calc(var(--gutter) / 2)); }
-  .offset-by-four.columns   { margin-left: calc(calc(var(--column-width) * 4) + calc(var(--gutter) / 2)); }
-  .offset-by-five.columns   { margin-left: calc(calc(var(--column-width) * 5) + calc(var(--gutter) / 2)); }
-  .offset-by-six.columns    { margin-left: calc(calc(var(--column-width) * 6) + calc(var(--gutter) / 2)); }
-  .offset-by-seven.columns  { margin-left: calc(calc(var(--column-width) * 7) + calc(var(--gutter) / 2)); }
-  .offset-by-eight.columns  { margin-left: calc(calc(var(--column-width) * 8) + calc(var(--gutter) / 2)); }
-  .offset-by-nine.columns   { margin-left: calc(calc(var(--column-width) * 9) + calc(var(--gutter) / 2)); }
-  .offset-by-ten.columns    { margin-left: calc(calc(var(--column-width) * 10) + calc(var(--gutter) / 2)); }
-  .offset-by-eleven.columns { margin-left: calc(calc(var(--column-width) * 11) + calc(var(--gutter) / 2)); }
+  .offset-by-one.columns          { margin-left: calc(calc(var(--column-width) * 1) + calc(var(--gutter) / 2)); }
+  .offset-by-two.columns          { margin-left: calc(calc(var(--column-width) * 2) + calc(var(--gutter) / 2)); }
+  .offset-by-three.columns,
+  .offset-by-one-quarter.columns  { margin-left: calc(calc(var(--column-width) * 3) + calc(var(--gutter) / 2)); }
+  .offset-by-four.columns,
+  .offset-by-one-third.columns    { margin-left: calc(calc(var(--column-width) * 4) + calc(var(--gutter) / 2)); }
+  .offset-by-five.columns         { margin-left: calc(calc(var(--column-width) * 5) + calc(var(--gutter) / 2)); }
+  .offset-by-six.columns,
+  .offset-by-one-half             { margin-left: calc(calc(var(--column-width) * 6) + calc(var(--gutter) / 2)); }
+  .offset-by-seven.columns        { margin-left: calc(calc(var(--column-width) * 7) + calc(var(--gutter) / 2)); }
+  .offset-by-eight.columns,
+  .offset-two-thirds.columns      { margin-left: calc(calc(var(--column-width) * 8) + calc(var(--gutter) / 2)); }
+  .offset-by-nine.columns         { margin-left: calc(calc(var(--column-width) * 9) + calc(var(--gutter) / 2)); }
+  .offset-by-ten.columns          { margin-left: calc(calc(var(--column-width) * 10) + calc(var(--gutter) / 2)); }
+  .offset-by-eleven.columns       { margin-left: calc(calc(var(--column-width) * 11) + calc(var(--gutter) / 2)); }
 }
