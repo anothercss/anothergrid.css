@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="css/anothergrid.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    html,body {
+    html,
+    body {
       font-family: monospace;
       font-size: 1em;
       line-height: 1.6;
@@ -24,6 +25,14 @@
       text-align: center;
       color: #fff;
       font-size: 1.2rem;
+    }
+
+    .nested {
+      background-color: #11ffff;
+    }
+
+    .container__nested {
+      margin-top: 1em;
     }
   </style>
 </head>
@@ -193,6 +202,12 @@
     </div>
 
     <div class="row">
+      <div class="five columns offset-by-seven">
+        <div class="demo-col">five columns offset by seven</div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="four columns">
         <div class="demo-col">four columns</div>
       </div>
@@ -202,8 +217,57 @@
     </div>
 
     <div class="row">
+      <div class="three columns offset-by-nine">
+        <div class="demo-col">three columns offset by nine</div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="six columns offset-by-three">
         <div class="demo-col">six columns offset by three</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="eight columns offset-by-two">
+        <h1>nested examples</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="six columns">
+        <div class="demo-col">six columns</div>
+      </div>
+      <div class="six columns">
+        <div class="demo-col">
+          six columns with nested grid
+
+          <div class="container container__nested">
+            <div class="row">
+              <div class="six columns">
+                <div class="demo-col nested">
+                  six columns nested
+                </div>
+              </div>
+              <div class="six columns">
+                <div class="demo-col nested">
+                  six columns nested
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="twelve columns">
+                <div class="demo-col nested">
+                  twelve columns nested
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
