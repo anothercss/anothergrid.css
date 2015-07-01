@@ -1,3 +1,9 @@
+/*! anothergrid.css v0.1.1 | MIT License */
+
+/**
+* TODO: Add small and medium grids
+*/
+
 :root {
   --total-columns: 12;
   --column-width: calc(100% / var(--total-columns));
