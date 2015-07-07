@@ -58,7 +58,6 @@ gulp.task('prod', function() {
       compatibility: '*',
       debug: false,
       keepBreaks: false,
-      keepSpecialComments: 0,
       mediaMerging: true,
       roundingPrecision: 10,
       shorthandCompacting: false
