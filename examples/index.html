@@ -6,6 +6,7 @@
   <title>anothergrid.css</title>
   <link rel="stylesheet" href="css/anothergrid.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
   <style>
     html,
     body {
@@ -39,7 +40,7 @@
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row collapse">
       <div class="eight columns offset-by-two">
         <h1>anothergrid.css examples</h1>
       </div>
@@ -47,13 +48,13 @@
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row collapse">
       <div class="twelve columns">
         <div class="demo-col">twelve columns</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="one columns">
         <div class="demo-col">one</div>
       </div>
@@ -62,7 +63,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="two columns">
         <div class="demo-col">two columns</div>
       </div>
@@ -71,7 +72,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="three columns">
         <div class="demo-col">three columns</div>
       </div>
@@ -80,7 +81,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="four columns">
         <div class="demo-col">four columns</div>
       </div>
@@ -89,7 +90,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="five columns">
         <div class="demo-col">five columns</div>
       </div>
@@ -107,7 +108,7 @@
       </div>
 
     </div>
-    <div class="row">
+    <div class="row collapse">
       <div class="four columns">
         <div class="demo-col">four columns</div>
       </div>
@@ -119,7 +120,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="three columns">
         <div class="demo-col">three columns</div>
       </div>
@@ -134,7 +135,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="two columns">
         <div class="demo-col">two columns</div>
       </div>
@@ -146,7 +147,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="seven columns">
         <div class="demo-col">seven columns</div>
       </div>
@@ -157,7 +158,7 @@
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row collapse">
       <div class="eight columns offset-by-two">
         <h1>offset examples</h1>
       </div>
@@ -165,49 +166,49 @@
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row collapse">
       <div class="eleven columns offset-by-one">
         <div class="demo-col">eleven columns offset by one</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="ten columns offset-by-two">
         <div class="demo-col">ten columns offset by two</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="nine columns offset-by-three">
         <div class="demo-col">nine columns offset by three</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="eight columns offset-by-four">
         <div class="demo-col">eight columns offset by four</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="seven columns offset-by-five">
         <div class="demo-col">seven columns offset by five</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="six columns offset-by-six">
         <div class="demo-col">six columns offset by six</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="five columns offset-by-seven">
         <div class="demo-col">five columns offset by seven</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="four columns">
         <div class="demo-col">four columns</div>
       </div>
@@ -216,13 +217,13 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="three columns offset-by-nine">
         <div class="demo-col">three columns offset by nine</div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row collapse">
       <div class="six columns offset-by-three">
         <div class="demo-col">six columns offset by three</div>
       </div>
@@ -230,7 +231,7 @@
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row collapse">
       <div class="eight columns offset-by-two">
         <h1>nested examples</h1>
       </div>
@@ -238,7 +239,7 @@
   </div>
 
   <div class="container">
-    <div class="row">
+    <div class="row collapse">
       <div class="six columns">
         <div class="demo-col">six columns</div>
       </div>
@@ -247,7 +248,7 @@
           six columns with nested grid
 
           <div class="container container__nested">
-            <div class="row">
+            <div class="row collapse">
               <div class="six columns">
                 <div class="demo-col nested">
                   six columns nested
@@ -259,7 +260,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row collapse">
               <div class="twelve columns">
                 <div class="demo-col nested">
                   twelve columns nested
@@ -268,6 +269,14 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row collapse">
+      <div class="twelve columns">
+        <p><small>anothergrid.css was built with a text editor by <a href="https://github.com/benhinchley">Benjamin Hinchley</a>.</small></p>
       </div>
     </div>
   </div>
