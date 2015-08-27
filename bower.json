@@ -2,13 +2,13 @@
   "name": "anothergrid.css",
   "description": "another grid system",
   "license": "MIT",
-  "homepage": "https://github.com/benhinchley/anothergrid.css",
+  "homepage": "https://github.com/anothercss/anothergrid.css",
   "authors": [
     "Benjamin Hinchley <benjaminhinchley@gmail.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/benhinchley/anothergrid.css.git"
+    "url": "https://github.com/anothercss/anothergrid.css.git"
   },
   "main": [
     "anothergrid.css",
@@ -26,6 +26,6 @@
     "bower_components",
     "gulpfile.js",
     "package.json",
-    "gulpfile.js",
+    "gulpfile.js"
   ]
 }
