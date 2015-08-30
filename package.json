@@ -7,6 +7,7 @@
     "example": "examples"
   },
   "devDependencies": {
+    "autoprefixer-core": "^5.2.1",
     "gulp": "^3.9.0",
     "gulp-csscomb": "^3.0.6",
     "gulp-cssmin": "^0.1.7",
@@ -20,6 +21,7 @@
     "postcss-calc": "^4.1.0",
     "postcss-custom-media": "^4.0.0",
     "postcss-custom-properties": "^4.0.0",
-    "postcss-import": "^6.0.0"
+    "postcss-import": "^6.0.0",
+    "postcss-discard-comments": "^1.2.1"
   }
 }

@@ -15,16 +15,19 @@ var paths = {
 }
 
 var processors = [
-  require('postcss-import'),
-  require('postcss-custom-properties'),
-  require('postcss-custom-media'),
-  require('postcss-calc')
+  require('postcss-import')(),
+  require('postcss-custom-properties')(),
+  require('postcss-custom-media')(),
+  require('postcss-calc')(),
+  require('postcss-discard-comments')({
+    removeAllButFirst: true
+  }),
+  require('autoprefixer-core')()
 ]
 
 var cssTask = function(options) {
   return gulp.src(options.src)
     .pipe(postcss(processors))
-    .pipe(cssmin(options.optimize))
     .pipe(csscomb())
     .pipe(gulp.dest(options.dest))
     .pipe(gulp.dest(options.examples))
@@ -40,23 +43,12 @@ gulp.task('dev', function() {
   cssTask({
     src: paths.css.src,
     minify: false,
-    optimize: {
-      advanced: true,
-      aggressiveMerging: true,
-      benchmark: false,
-      compatibility: '*',
-      debug: false,
-      keepBreaks: true,
-      mediaMerging: true,
-      roundingPrecision: 10,
-      shorthandCompacting: false
-    },
     dest: paths.css.dest,
     examples: paths.css.examples
   })
 })
 
-gulp.task('watch', function () {
+gulp.task('watch', function() {
   gulp.watch(paths.css.watch, ['dev'])
 })
 
@@ -64,17 +56,6 @@ gulp.task('prod', function() {
   cssTask({
     src: paths.css.src,
     minify: true,
-    optimize: {
-      advanced: true,
-      aggressiveMerging: true,
-      benchmark: false,
-      compatibility: '*',
-      debug: false,
-      keepBreaks: true,
-      mediaMerging: true,
-      roundingPrecision: 10,
-      shorthandCompacting: false
-    },
     cssmin: {
       advanced: true,
       aggressiveMerging: true,
