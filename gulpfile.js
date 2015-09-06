@@ -5,6 +5,8 @@ var rename = require('gulp-rename')
 var cssmin = require('gulp-minify-css')
 var csscomb = require('gulp-csscomb')
 
+var browserSync = require('browser-sync').create()
+
 var paths = {
   css: {
     src: './anothergrid.css',
@@ -37,6 +39,7 @@ var cssTask = function(options) {
     .pipe(gulpif(options.minify, cssmin(options.cssmin)))
     .pipe(gulpif(options.minify, gulp.dest(options.dest)))
     .pipe(gulpif(options.minify, gulp.dest(options.examples)))
+    .pipe(browserSync.stream())
 }
 
 gulp.task('dev', function() {
@@ -49,6 +52,13 @@ gulp.task('dev', function() {
 })
 
 gulp.task('watch', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./examples"
+    },
+    logPrefix: "anothercss"
+  })
+
   gulp.watch(paths.css.watch, ['dev'])
 })
 
