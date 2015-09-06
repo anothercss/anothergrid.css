@@ -2,7 +2,7 @@ var gulp = require('gulp')
 var gulpif = require('gulp-if')
 var postcss = require('gulp-postcss')
 var rename = require('gulp-rename')
-var cssmin = require('gulp-cssmin')
+var cssmin = require('gulp-minify-css')
 var csscomb = require('gulp-csscomb')
 
 var paths = {
