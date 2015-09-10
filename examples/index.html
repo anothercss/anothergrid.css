@@ -8,11 +8,16 @@
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
   <link rel="stylesheet" href="css/anothergrid.css">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     html,
     body {
       font-family: monospace;
       font-size: 1em;
       line-height: 1.6;
+      background-color: #fff;
     }
 
     h1 {
@@ -21,7 +26,8 @@
     }
 
     .demo-col {
-      padding: 10px;
+      padding-top: 1em;
+      padding-bottom: 1em;
       background-color: #0074D9;
       text-align: center;
       color: #fff;
@@ -31,10 +37,6 @@
     .nested {
       background-color: #001f3f;
     }
-
-    .container__nested {
-      margin-top: 1em;
-    }
   </style>
 </head>
 
@@ -42,12 +44,18 @@
   <div class="container">
     <div class="row">
       <div class="eight columns offset-by-two">
-        <h1>anothergrid.css examples</h1>
+        <h1>anothergrid.css</h1>
       </div>
     </div>
   </div>
 
   <div class="container">
+    <div class="row">
+      <div class="twelve columns">
+        <h1>Basic grid examples</h1>
+      </div>
+    </div>
+
     <div class="row">
       <div class="twelve columns">
         <div class="demo-col">twelve columns</div>
@@ -247,7 +255,7 @@
         <div class="demo-col">
           six columns with nested grid
 
-          <div class="container container__nested">
+          <div class="container">
             <div class="row">
               <div class="six columns">
                 <div class="demo-col nested">
@@ -271,6 +279,82 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="three columns">
+        <div class="demo-col">
+          three columns
+          <div class="container">
+            <div class="row">
+              <div class="six columns">
+                <div class="demo-col nested">
+                  six columns nested
+                </div>
+              </div>
+              <div class="six columns">
+                <div class="demo-col nested">
+                  six columns nested
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="twelve columns">
+                <div class="demo-col nested">
+                  twelve columns nested
+                </div>
+              </div>
+              <div class="twelve columns">
+                <div class="demo-col nested">
+                  twelve columns nested
+                </div>
+              </div>
+              <div class="twelve columns">
+                <div class="demo-col nested">
+                  twelve columns nested
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nine columns">
+        <div class="demo-col">
+          nine columns
+          <div class="container">
+            <div class="row">
+              <div class="twelve columns">
+                <div class="demo-col nested">
+                  twelve columns nested
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="four columns">
+                <div class="demo-col nested">
+                  four columns nested
+                </div>
+              </div>
+              <div class="eight columns">
+                <div class="demo-col nested">
+                  eight columns nested
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="eight columns">
+                <div class="demo-col nested">
+                  eight columns nested
+                </div>
+              </div>
+              <div class="four columns">
+                <div class="demo-col nested">
+                  four columns nested
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="container">
@@ -281,27 +365,35 @@
 
   <div class="container">
     <div class="row">
-      <div class="xs-six sm-six columns">
-        <div class="demo-col">xs-six sm-six</div>
+      <div class="xs-six sm-seven columns">
+        <div class="demo-col">xs-six sm-seven columns</div>
       </div>
-      <div class="xs-six sm-six columns">
-        <div class="demo-col">xs-six sm-six</div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="sm-twelve lg-four columns">
-        <div class="demo-col">sm-twelve lg-four</div>
-      </div>
-      <div class="sm-twelve lg-four columns">
-        <div class="demo-col">sm-twelve lg-four</div>
-      </div>
-      <div class="sm-twelve lg-four columns">
-        <div class="demo-col">sm-twelve lg-four</div>
+      <div class="xs-six sm-five columns">
+        <div class="demo-col">xs-six sm-five columns</div>
       </div>
     </div>
     <div class="row">
-      <div class="">
-
+      <div class="sm-twelve md-six lg-four columns">
+        <div class="demo-col">sm-twelve md-six lg-four columns</div>
+      </div>
+      <div class="sm-twelve md-six lg-four columns">
+        <div class="demo-col">sm-twelve md-six lg-four columns</div>
+      </div>
+      <div class="sm-twelve lg-four columns">
+        <div class="demo-col">sm-twelve lg-four columns</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="md-six columns">
+        <div class="demo-col">md-six columns</div>
+      </div>
+      <div class="md-six columns">
+        <div class="demo-col">md-six columns</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="md-eight lg-six lg-offset-by-six columns">
+        <div class="demo-col">md-eight lg-six lg-offset-by-six columns</div>
       </div>
     </div>
   </div>
@@ -309,7 +401,9 @@
   <div class="container">
     <div class="row">
       <div class="twelve columns">
-        <p><small>anothergrid.css was built with a text editor by <a href="https://github.com/benhinchley">Benjamin Hinchley</a>.</small></p>
+        <p>
+          <small>anothergrid.css was built with a text editor by <a href="https://github.com/benhinchley">Benjamin Hinchley</a>.</small>
+        </p>
       </div>
     </div>
   </div>
