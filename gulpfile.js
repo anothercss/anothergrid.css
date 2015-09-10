@@ -17,14 +17,14 @@ var paths = {
 }
 
 var processors = [
-  require('postcss-import')(),
   require('postcss-custom-properties')(),
   require('postcss-custom-media')(),
   require('postcss-calc')(),
   require('postcss-discard-comments')({
     removeAllButFirst: true
   }),
-  require('autoprefixer-core')()
+  require('autoprefixer-core')(),
+  require("css-mqpacker")()
 ]
 
 var cssTask = function(options) {
