@@ -1,6 +1,12 @@
 /*! anothergrid.css | MIT License */
 
-/* Grid variables and setup */
+/* TODO: Add grid utilities like hide, show etc. */
+
+/* ---------------
+* Setup
+* --------------- */
+
+/* Variable definitions */
 :root {
   --total-columns: 12;
   --column-width: calc(100% / var(--total-columns));
@@ -8,238 +14,259 @@
   --gutter: 1em;
 }
 
-@custom-media --grid-xsmall screen and (max-width: 30em);
-@custom-media --grid-small screen and (min-width: 30em);
-@custom-media --grid-medium screen and (min-width: 45em);
-@custom-media --grid-large screen and (min-width: 60em);
+/* Media query definitions */
+@custom-media --grid-basic screen and (min-width: 35em) and (orientation: portrait), screen and (min-width: 35em) and (orientation: landscape);
+@custom-media --grid-xs screen and (max-width: 35em) and (orientation: portrait), screen and (max-width: 35em) and (orientation: landscape), screen and (min-width: 35em) and (orientation: landscape);
+@custom-media --grid-sm screen and (min-width: 35em) and (orientation: portrait), screen and (min-width: 45em) and (orientation: landscape);
+@custom-media --grid-md screen and (min-width: 45em) and (orientation: portrait), screen and (min-width: 45em) and (orientation: landscape);
+@custom-media --grid-lg screen and (min-width: 60em) and (orientation: landscape);
 
-/* Container and row setup */
+
+/* ---------------
+* Container
+* --------------- */
 .container {
   margin: 0 auto;
   width: 94%;
   max-width: var(--max-width);
 }
 
-.row {
-  margin-left: calc(-1 * calc(var(--gutter) / 2));
-  margin-right: calc(-1 * calc(var(--gutter) / 2));
+/* Nested container styling */
+.container .container {
+  margin-top: var(--gutter);
+  width: calc(100% - (var(--gutter) * 2));
 }
 
+
+/* ---------------
+* Row
+* --------------- */
+.row {
+  margin-left: calc(-1 * (var(--gutter) / 2));
+  margin-right: calc(-1 * (var(--gutter) / 2));
+}
+
+/* Row clearfix */
 .row::before,
 .row::after { content: " "; display: table; }
 .row::after { clear: both; }
 
+
+/* ---------------
+* Columns
+* --------------- */
 .columns {
+  width: calc(100% - var(--gutter));
   float: left;
   min-height: 1px;
   margin-left: calc(var(--gutter) / 2);
   margin-right: calc(var(--gutter) / 2);
 }
 
-.row ~ .row { margin-top: var(--gutter); }
 
-/* Basic Grid */
-@media (--grid-small) {
-  .one.columns          { width: calc((var(--column-width) * 1) - var(--gutter)); }
-  .two.columns          { width: calc((var(--column-width) * 2) - var(--gutter)); }
-  .three.columns,
-  .one-quarter.columns  { width: calc((var(--column-width) * 3) - var(--gutter)); }
-  .four.columns,
-  .one-third.columns    { width: calc((var(--column-width) * 4) - var(--gutter)); }
-  .five.columns         { width: calc((var(--column-width) * 5) - var(--gutter)); }
-  .six.columns,
-  .one-half.columns     { width: calc((var(--column-width) * 6) - var(--gutter)); }
-  .seven.columns        { width: calc((var(--column-width) * 7) - var(--gutter)); }
-  .eight.columns,
-  .two-thirds.columns   { width: calc((var(--column-width) * 8) - var(--gutter)); }
-  .nine.columns         { width: calc((var(--column-width) * 9) - var(--gutter)); }
-  .ten.columns          { width: calc((var(--column-width) * 10) - var(--gutter)); }
-  .eleven.columns       { width: calc((var(--column-width) * 11) - var(--gutter)); }
-  .twelve.columns       { width: calc((var(--column-width) * 12) - var(--gutter)); }
+/* Stacked column and row spacing */
+.row ~ .row,
+.columns ~ .columns { margin-top: var(--gutter); }
 
-  .offset-by-one.columns          { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2)); }
-  .offset-by-two.columns          { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2)); }
-  .offset-by-three.columns,
-  .offset-by-one-quarter.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2)); }
-  .offset-by-four.columns,
-  .offset-by-one-third.columns    { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2)); }
-  .offset-by-five.columns         { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2)); }
-  .offset-by-six.columns,
-  .offset-by-one-half.columns     { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2)); }
-  .offset-by-seven.columns        { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2)); }
-  .offset-by-eight.columns,
-  .offset-by-two-thirds.columns   { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2)); }
-  .offset-by-nine.columns         { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2)); }
-  .offset-by-ten.columns          { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2)); }
-  .offset-by-eleven.columns       { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2)); }
+
+/* ---------------
+* Basic grid
+* --------------- */
+@media (--grid-basic) {
+  /* Make sure grid columns line up horizontally */
+  .columns ~ .columns { margin-top: 0; }
+  /* Make sure grid columns that span twelve columns stack nicely  */
+  .twelve.columns ~ .twelve.columns { margin-top: var(--gutter); }
+
+  /* Basic grid columns */
+  .one.columns    { width: calc((var(--column-width) * 1) - var(--gutter))}
+  .two.columns    { width: calc((var(--column-width) * 2) - var(--gutter))}
+  .three.columns  { width: calc((var(--column-width) * 3) - var(--gutter))}
+  .four.columns   { width: calc((var(--column-width) * 4) - var(--gutter))}
+  .five.columns   { width: calc((var(--column-width) * 5) - var(--gutter))}
+  .six.columns    { width: calc((var(--column-width) * 6) - var(--gutter))}
+  .seven.columns  { width: calc((var(--column-width) * 7) - var(--gutter))}
+  .eight.columns  { width: calc((var(--column-width) * 8) - var(--gutter))}
+  .nine.columns   { width: calc((var(--column-width) * 9) - var(--gutter))}
+  .ten.columns    { width: calc((var(--column-width) * 10) - var(--gutter))}
+  .eleven.columns { width: calc((var(--column-width) * 11) - var(--gutter))}
+  .twelve.columns { width: calc((var(--column-width) * 12) - var(--gutter))}
+
+  /* Basic grid column offsets */
+  .offset-by-one.columns    { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2))}
+  .offset-by-two.columns    { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2))}
+  .offset-by-three.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2))}
+  .offset-by-four.columns   { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2))}
+  .offset-by-five.columns   { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2))}
+  .offset-by-six.columns    { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2))}
+  .offset-by-seven.columns  { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2))}
+  .offset-by-eight.columns  { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2))}
+  .offset-by-nine.columns   { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2))}
+  .offset-by-ten.columns    { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2))}
+  .offset-by-eleven.columns { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2))}
 }
 
-/* Basic Grid Off */
-@media (--grid-xsmall) {
-  .row .columns:not([class*='xs-']) {
-    width: calc(100% - var(--gutter));
-  }
 
-  .row .columns:not([class*='xs-']) ~ .columns:not([class*='xs-']) {
-    margin-top: var(--gutter);
-  }
+/* ---------------
+* Extra small grid
+* --------------- */
+@media (--grid-xs) {
+  /* Stack small columns that don't have a extra small grid column size */
+  .columns[class*="sm-"] ~ .columns[class*="sm-"] { margin-top: var(--gutter); }
+  /* Make sure extra small grid columns line up horizontally */
+  .columns[class*="xs-"] ~ .columns[class*="xs-"] { margin-top: 0; }
+  /* Make sure extra small grid columns that span twelve columns stack nicely  */
+  .xs-twelve.columns ~ .xs-twelve.columns { margin-top: var(--gutter); }
 
-  .row .columns[class*='offset-by-'] {
-    margin-left: calc(var(--gutter) / 2);
-  }
+  /* Remove offset set by the small grid */
+  .columns[class*="sm-offset-by-"] { margin-left: calc(var(--gutter) / 2); }
+
+  /* Extra small columns */
+  .xs-one.columns     { width: calc((var(--column-width) * 1) - var(--gutter))}
+  .xs-two.columns     { width: calc((var(--column-width) * 2) - var(--gutter))}
+  .xs-three.columns   { width: calc((var(--column-width) * 3) - var(--gutter))}
+  .xs-four.columns    { width: calc((var(--column-width) * 4) - var(--gutter))}
+  .xs-five.columns    { width: calc((var(--column-width) * 5) - var(--gutter))}
+  .xs-six.columns     { width: calc((var(--column-width) * 6) - var(--gutter))}
+  .xs-seven.columns   { width: calc((var(--column-width) * 7) - var(--gutter))}
+  .xs-eight.columns   { width: calc((var(--column-width) * 8) - var(--gutter))}
+  .xs-nine.columns    { width: calc((var(--column-width) * 9) - var(--gutter))}
+  .xs-ten.columns     { width: calc((var(--column-width) * 10) - var(--gutter))}
+  .xs-eleven.columns  { width: calc((var(--column-width) * 11) - var(--gutter))}
+  .xs-twelve.columns  { width: calc((var(--column-width) * 12) - var(--gutter))}
+
+  /* Extra small column offsets */
+  .xs-offset-by-one.columns    { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2))}
+  .xs-offset-by-two.columns    { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2))}
+  .xs-offset-by-three.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2))}
+  .xs-offset-by-four.columns   { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2))}
+  .xs-offset-by-five.columns   { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2))}
+  .xs-offset-by-six.columns    { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2))}
+  .xs-offset-by-seven.columns  { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2))}
+  .xs-offset-by-eight.columns  { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2))}
+  .xs-offset-by-nine.columns   { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2))}
+  .xs-offset-by-ten.columns    { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2))}
+  .xs-offset-by-eleven.columns { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2))}
 }
 
-/* Responsive Grids
-* ---------------------------
-* There are four grid sizes
-* Extra Small: < 30em
-* Small: > 30em
-* Medium: > 45em
-* Large: > 60em
-*/
 
-/* Extra Small - xs */
-/*
-* The extra small grid does not have offset cause like come one
-* seriously what you trying to use offsets on mobile for
-*/
-.xs-one.columns          { width: calc((var(--column-width) * 1) - var(--gutter)); }
-.xs-two.columns          { width: calc((var(--column-width) * 2) - var(--gutter)); }
-.xs-three.columns,
-.xs-one-quarter.columns  { width: calc((var(--column-width) * 3) - var(--gutter)); }
-.xs-four.columns,
-.xs-one-third.columns    { width: calc((var(--column-width) * 4) - var(--gutter)); }
-.xs-five.columns         { width: calc((var(--column-width) * 5) - var(--gutter)); }
-.xs-six.columns,
-.xs-one-half.columns     { width: calc((var(--column-width) * 6) - var(--gutter)); }
-.xs-seven.columns        { width: calc((var(--column-width) * 7) - var(--gutter)); }
-.xs-eight.columns,
-.xs-two-thirds.columns   { width: calc((var(--column-width) * 8) - var(--gutter)); }
-.xs-nine.columns         { width: calc((var(--column-width) * 9) - var(--gutter)); }
-.xs-ten.columns          { width: calc((var(--column-width) * 10) - var(--gutter)); }
-.xs-eleven.columns       { width: calc((var(--column-width) * 11) - var(--gutter)); }
-.xs-twelve.columns       { width: calc((var(--column-width) * 12) - var(--gutter)); }
+/* ---------------
+* Small grid
+* --------------- */
+@media (--grid-sm) {
+  /* Stack medium columns that don't have a small grid column size */
+  .columns[class*="md-"] ~ .columns[class*="md-"] { margin-top: var(--gutter); }
+  /* Make sure small grid columns line up horizontally */
+  .columns[class*="sm-"] ~ .columns[class*="sm-"] { margin-top: 0; }
+  /* Make sure small grid columns that span twelve columns stack nicely  */
+  .sm-twelve.columns ~ .sm-twelve.columns { margin-top: var(--gutter); }
 
-/* Small - sm */
-@media (--grid-small) {
-  .sm-one.columns          { width: calc((var(--column-width) * 1) - var(--gutter)); }
-  .sm-two.columns          { width: calc((var(--column-width) * 2) - var(--gutter)); }
-  .sm-three.columns,
-  .sm-one-quarter.columns  { width: calc((var(--column-width) * 3) - var(--gutter)); }
-  .sm-four.columns,
-  .sm-one-third.columns    { width: calc((var(--column-width) * 4) - var(--gutter)); }
-  .sm-five.columns         { width: calc((var(--column-width) * 5) - var(--gutter)); }
-  .sm-six.columns,
-  .sm-one-half.columns     { width: calc((var(--column-width) * 6) - var(--gutter)); }
-  .sm-seven.columns        { width: calc((var(--column-width) * 7) - var(--gutter)); }
-  .sm-eight.columns,
-  .sm-two-thirds.columns   { width: calc((var(--column-width) * 8) - var(--gutter)); }
-  .sm-nine.columns         { width: calc((var(--column-width) * 9) - var(--gutter)); }
-  .sm-ten.columns          { width: calc((var(--column-width) * 10) - var(--gutter)); }
-  .sm-eleven.columns       { width: calc((var(--column-width) * 11) - var(--gutter)); }
-  .sm-twelve.columns       { width: calc((var(--column-width) * 12) - var(--gutter)); }
+  /* Remove offset set by the medium grid */
+  .columns[class*="md-offset-by-"] { margin-left: calc(var(--gutter) / 2); }
 
-  .sm-offset-by-one.columns          { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2)); }
-  .sm-offset-by-two.columns          { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2)); }
-  .sm-offset-by-three.columns,
-  .sm-offset-by-one-quarter.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2)); }
-  .sm-offset-by-four.columns,
-  .sm-offset-by-one-third.columns    { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2)); }
-  .sm-offset-by-five.columns         { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2)); }
-  .sm-offset-by-six.columns,
-  .sm-offset-by-one-half.columns     { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2)); }
-  .sm-offset-by-seven.columns        { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2)); }
-  .sm-offset-by-eight.columns,
-  .sm-offset-by-two-thirds.columns   { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2)); }
-  .sm-offset-by-nine.columns         { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2)); }
-  .sm-offset-by-ten.columns          { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2)); }
-  .sm-offset-by-eleven.columns       { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2)); }
+  /* Small columns */
+  .sm-one.columns     { width: calc((var(--column-width) * 1) - var(--gutter))}
+  .sm-two.columns     { width: calc((var(--column-width) * 2) - var(--gutter))}
+  .sm-three.columns   { width: calc((var(--column-width) * 3) - var(--gutter))}
+  .sm-four.columns    { width: calc((var(--column-width) * 4) - var(--gutter))}
+  .sm-five.columns    { width: calc((var(--column-width) * 5) - var(--gutter))}
+  .sm-six.columns     { width: calc((var(--column-width) * 6) - var(--gutter))}
+  .sm-seven.columns   { width: calc((var(--column-width) * 7) - var(--gutter))}
+  .sm-eight.columns   { width: calc((var(--column-width) * 8) - var(--gutter))}
+  .sm-nine.columns    { width: calc((var(--column-width) * 9) - var(--gutter))}
+  .sm-ten.columns     { width: calc((var(--column-width) * 10) - var(--gutter))}
+  .sm-eleven.columns  { width: calc((var(--column-width) * 11) - var(--gutter))}
+  .sm-twelve.columns  { width: calc((var(--column-width) * 12) - var(--gutter))}
+
+  /* Small column offsets */
+  .sm-offset-by-one.columns    { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2))}
+  .sm-offset-by-two.columns    { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2))}
+  .sm-offset-by-three.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2))}
+  .sm-offset-by-four.columns   { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2))}
+  .sm-offset-by-five.columns   { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2))}
+  .sm-offset-by-six.columns    { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2))}
+  .sm-offset-by-seven.columns  { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2))}
+  .sm-offset-by-eight.columns  { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2))}
+  .sm-offset-by-nine.columns   { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2))}
+  .sm-offset-by-ten.columns    { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2))}
+  .sm-offset-by-eleven.columns { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2))}
 }
 
-/*
-* The small grid by default will collapse the columns and rows to stack on top
-* of eachother when screen width is less than 30em
-*/
-@media (--grid-xsmall) {
-  [class*="sm-"]:not([class*="xs-"]) {
-    width: calc(100% - var(--gutter));
-    margin-top: var(--gutter);
-    margin-left: calc(var(--gutter) / 2);
-  }
 
-  [class*="sm-"]:not([class*="xs-"]):first-of-type {
-    margin-top: 0;
-  }
+/* ---------------
+* Medium grid
+* --------------- */
+@media (--grid-md) {
+  /* Stack large columns that don't have a medium grid column size */
+  .columns[class*="lg-"] ~ .columns[class*="lg-"] { margin-top: var(--gutter); }
+  /* Make sure medium grid columns line up horizontally */
+  .columns[class*="md-"] ~ .columns[class*="md-"] { margin-top: 0; }
+  /* Make sure medium grid columns that span twelve columns stack nicely  */
+  .md-twelve.columns ~ .md-twelve.columns { margin-top: var(--gutter); }
+
+  /* Remove offset set by the large grid */
+  .columns[class*="lg-offset-by-"] { margin-left: calc(var(--gutter) / 2); }
+
+  /* Medium columns */
+  .md-one.columns     { width: calc((var(--column-width) * 1) - var(--gutter))}
+  .md-two.columns     { width: calc((var(--column-width) * 2) - var(--gutter))}
+  .md-three.columns   { width: calc((var(--column-width) * 3) - var(--gutter))}
+  .md-four.columns    { width: calc((var(--column-width) * 4) - var(--gutter))}
+  .md-five.columns    { width: calc((var(--column-width) * 5) - var(--gutter))}
+  .md-six.columns     { width: calc((var(--column-width) * 6) - var(--gutter))}
+  .md-seven.columns   { width: calc((var(--column-width) * 7) - var(--gutter))}
+  .md-eight.columns   { width: calc((var(--column-width) * 8) - var(--gutter))}
+  .md-nine.columns    { width: calc((var(--column-width) * 9) - var(--gutter))}
+  .md-ten.columns     { width: calc((var(--column-width) * 10) - var(--gutter))}
+  .md-eleven.columns  { width: calc((var(--column-width) * 11) - var(--gutter))}
+  .md-twelve.columns  { width: calc((var(--column-width) * 12) - var(--gutter))}
+
+  /* Medium column offsets */
+  .md-offset-by-one.columns    { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2))}
+  .md-offset-by-two.columns    { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2))}
+  .md-offset-by-three.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2))}
+  .md-offset-by-four.columns   { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2))}
+  .md-offset-by-five.columns   { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2))}
+  .md-offset-by-six.columns    { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2))}
+  .md-offset-by-seven.columns  { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2))}
+  .md-offset-by-eight.columns  { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2))}
+  .md-offset-by-nine.columns   { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2))}
+  .md-offset-by-ten.columns    { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2))}
+  .md-offset-by-eleven.columns { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2))}
 }
 
-/* Medium - md */
-@media (--grid-medium) {
-  .md-one.columns          { width: calc((var(--column-width) * 1) - var(--gutter)); }
-  .md-two.columns          { width: calc((var(--column-width) * 2) - var(--gutter)); }
-  .md-three.columns,
-  .md-one-quarter.columns  { width: calc((var(--column-width) * 3) - var(--gutter)); }
-  .md-four.columns,
-  .md-one-third.columns    { width: calc((var(--column-width) * 4) - var(--gutter)); }
-  .md-five.columns         { width: calc((var(--column-width) * 5) - var(--gutter)); }
-  .md-six.columns,
-  .md-one-half.columns     { width: calc((var(--column-width) * 6) - var(--gutter)); }
-  .md-seven.columns        { width: calc((var(--column-width) * 7) - var(--gutter)); }
-  .md-eight.columns,
-  .md-two-thirds.columns   { width: calc((var(--column-width) * 8) - var(--gutter)); }
-  .md-nine.columns         { width: calc((var(--column-width) * 9) - var(--gutter)); }
-  .md-ten.columns          { width: calc((var(--column-width) * 10) - var(--gutter)); }
-  .md-eleven.columns       { width: calc((var(--column-width) * 11) - var(--gutter)); }
-  .md-twelve.columns       { width: calc((var(--column-width) * 12) - var(--gutter)); }
 
-  .md-offset-by-one.columns          { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2)); }
-  .md-offset-by-two.columns          { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2)); }
-  .md-offset-by-three.columns,
-  .md-offset-by-one-quarter.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2)); }
-  .md-offset-by-four.columns,
-  .md-offset-by-one-third.columns    { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2)); }
-  .md-offset-by-five.columns         { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2)); }
-  .md-offset-by-six.columns,
-  .md-offset-by-one-half.columns     { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2)); }
-  .md-offset-by-seven.columns        { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2)); }
-  .md-offset-by-eight.columns,
-  .md-offset-by-two-thirds.columns   { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2)); }
-  .md-offset-by-nine.columns         { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2)); }
-  .md-offset-by-ten.columns          { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2)); }
-  .md-offset-by-eleven.columns       { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2)); }
-}
+/* ---------------
+* Large grid
+* --------------- */
+@media (--grid-lg) {
+  /* Make sure large grid columns line up horizontally */
+  .columns[class*="lg-"] ~ .columns[class*="lg-"] { margin-top: 0; }
 
-/* Large - lg */
-@media (--grid-large) {
-  .lg-one.columns          { width: calc((var(--column-width) * 1) - var(--gutter)); }
-  .lg-two.columns          { width: calc((var(--column-width) * 2) - var(--gutter)); }
-  .lg-three.columns,
-  .lg-one-quarter.columns  { width: calc((var(--column-width) * 3) - var(--gutter)); }
-  .lg-four.columns,
-  .lg-one-third.columns    { width: calc((var(--column-width) * 4) - var(--gutter)); }
-  .lg-five.columns         { width: calc((var(--column-width) * 5) - var(--gutter)); }
-  .lg-six.columns,
-  .lg-one-half.columns     { width: calc((var(--column-width) * 6) - var(--gutter)); }
-  .lg-seven.columns        { width: calc((var(--column-width) * 7) - var(--gutter)); }
-  .lg-eight.columns,
-  .lg-two-thirds.columns   { width: calc((var(--column-width) * 8) - var(--gutter)); }
-  .lg-nine.columns         { width: calc((var(--column-width) * 9) - var(--gutter)); }
-  .lg-ten.columns          { width: calc((var(--column-width) * 10) - var(--gutter)); }
-  .lg-eleven.columns       { width: calc((var(--column-width) * 11) - var(--gutter)); }
-  .lg-twelve.columns       { width: calc((var(--column-width) * 12) - var(--gutter)); }
+  /* Large columns */
+  .lg-one.columns     { width: calc((var(--column-width) * 1) - var(--gutter))}
+  .lg-two.columns     { width: calc((var(--column-width) * 2) - var(--gutter))}
+  .lg-three.columns   { width: calc((var(--column-width) * 3) - var(--gutter))}
+  .lg-four.columns    { width: calc((var(--column-width) * 4) - var(--gutter))}
+  .lg-five.columns    { width: calc((var(--column-width) * 5) - var(--gutter))}
+  .lg-six.columns     { width: calc((var(--column-width) * 6) - var(--gutter))}
+  .lg-seven.columns   { width: calc((var(--column-width) * 7) - var(--gutter))}
+  .lg-eight.columns   { width: calc((var(--column-width) * 8) - var(--gutter))}
+  .lg-nine.columns    { width: calc((var(--column-width) * 9) - var(--gutter))}
+  .lg-ten.columns     { width: calc((var(--column-width) * 10) - var(--gutter))}
+  .lg-eleven.columns  { width: calc((var(--column-width) * 11) - var(--gutter))}
+  .lg-twelve.columns  { width: calc((var(--column-width) * 12) - var(--gutter))}
 
-  .lg-offset-by-one.columns          { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2)); }
-  .lg-offset-by-two.columns          { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2)); }
-  .lg-offset-by-three.columns,
-  .lg-offset-by-one-quarter.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2)); }
-  .lg-offset-by-four.columns,
-  .lg-offset-by-one-third.columns    { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2)); }
-  .lg-offset-by-five.columns         { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2)); }
-  .lg-offset-by-six.columns,
-  .lg-offset-by-one-half.columns     { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2)); }
-  .lg-offset-by-seven.columns        { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2)); }
-  .lg-offset-by-eight.columns,
-  .lg-offset-by-two-thirds.columns   { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2)); }
-  .lg-offset-by-nine.columns         { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2)); }
-  .lg-offset-by-ten.columns          { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2)); }
-  .lg-offset-by-eleven.columns       { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2)); }
+  /* Large column offsets */
+  .lg-offset-by-one.columns    { margin-left: calc((var(--column-width) * 1) + (var(--gutter) / 2))}
+  .lg-offset-by-two.columns    { margin-left: calc((var(--column-width) * 2) + (var(--gutter) / 2))}
+  .lg-offset-by-three.columns  { margin-left: calc((var(--column-width) * 3) + (var(--gutter) / 2))}
+  .lg-offset-by-four.columns   { margin-left: calc((var(--column-width) * 4) + (var(--gutter) / 2))}
+  .lg-offset-by-five.columns   { margin-left: calc((var(--column-width) * 5) + (var(--gutter) / 2))}
+  .lg-offset-by-six.columns    { margin-left: calc((var(--column-width) * 6) + (var(--gutter) / 2))}
+  .lg-offset-by-seven.columns  { margin-left: calc((var(--column-width) * 7) + (var(--gutter) / 2))}
+  .lg-offset-by-eight.columns  { margin-left: calc((var(--column-width) * 8) + (var(--gutter) / 2))}
+  .lg-offset-by-nine.columns   { margin-left: calc((var(--column-width) * 9) + (var(--gutter) / 2))}
+  .lg-offset-by-ten.columns    { margin-left: calc((var(--column-width) * 10) + (var(--gutter) / 2))}
+  .lg-offset-by-eleven.columns { margin-left: calc((var(--column-width) * 11) + (var(--gutter) / 2))}
 }
