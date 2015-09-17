@@ -19,7 +19,9 @@ var paths = {
 var processors = [
   require('postcss-custom-properties')(),
   require('postcss-custom-media')(),
-  require('postcss-calc')(),
+  require('postcss-calc')({
+    precision: 10
+  }),
   require('postcss-discard-comments')({
     removeAllButFirst: true
   }),
@@ -27,25 +29,25 @@ var processors = [
   require("css-mqpacker")()
 ]
 
-var cssTask = function(options) {
+var buildTask = function(options) {
   return gulp.src(options.src)
     .pipe(postcss(processors))
     .pipe(csscomb())
     .pipe(gulp.dest(options.dest))
     .pipe(gulp.dest(options.examples))
-    .pipe(gulpif(options.minify, rename({
+    .pipe(gulpif(!options.development, rename({
       extname: ".min.css"
     })))
-    .pipe(gulpif(options.minify, cssmin(options.cssmin)))
-    .pipe(gulpif(options.minify, gulp.dest(options.dest)))
-    .pipe(gulpif(options.minify, gulp.dest(options.examples)))
+    .pipe(gulpif(!options.development, cssmin(options.cssmin)))
+    .pipe(gulpif(!options.development, gulp.dest(options.dest)))
+    .pipe(gulpif(!options.development, gulp.dest(options.examples)))
     .pipe(browserSync.stream())
 }
 
 gulp.task('dev', function() {
-  cssTask({
+  buildTask({
     src: paths.css.src,
-    minify: false,
+    development: true,
     dest: paths.css.dest,
     examples: paths.css.examples
   })
@@ -63,9 +65,9 @@ gulp.task('watch', function() {
 })
 
 gulp.task('prod', function() {
-  cssTask({
+  buildTask({
     src: paths.css.src,
-    minify: true,
+    development: false,
     cssmin: {
       advanced: true,
       aggressiveMerging: true,

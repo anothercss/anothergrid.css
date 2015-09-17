@@ -21,7 +21,7 @@ The responsive grid system incorporates devices orientaion into its sizing, so t
 * The **medium grid** is active in viewport sizes with
   * a min-width of 45em or 720px in both portrait and landscape.
 * The **large grid** is active in viewport sizes with
-  * a min-width of 60em or 960px in landscape.
+  * a min-width of 60em or 960px in landscape and portrait.
 
 ## Contribution Guidelines
 Anyone is welcome to contribute. It is a pretty simple setup. Just fork and clone this repo. Move into the folder in your command line app and run `npm install` and then `npm run watch`. When you are finished with your changes run `npm run prod` and create your PR.
